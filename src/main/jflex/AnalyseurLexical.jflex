@@ -65,7 +65,7 @@ comment	= {comment1}|{comment2}
 "*"			{ return new Symbol(sym.MUL, yyline, yycolumn) ;}
 ";"			{ return new Symbol(sym.SEMI, yyline, yycolumn) ;}
 "."			{ return new Symbol(sym.POINT, yyline, yycolumn) ;}
-{chiffre}+	{ return new Symbol(sym.ENTIER, yyline, yycolumn, new Integer(yytext())) ;}
+{chiffre}+	{ return new Symbol(sym.ENTIER, yyline, yycolumn, Integer.parseInt(yytext())) ;}
 {ident}		{ return new Symbol(sym.IDENT, yyline, yycolumn, yytext()) ;}
 {comment}	{ /*commentaire : pas d'action*/ }
 {espace} 	{ /*espace : pas d'action*/ }

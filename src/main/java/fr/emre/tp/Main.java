@@ -11,28 +11,28 @@ public class Main {
             yy = new LexicalAnalyzer(new FileReader(args[0]));
         else
             yy = new LexicalAnalyzer(new InputStreamReader(System.in));
-        @SuppressWarnings("deprecation")
         parser p = new parser(yy);
 
-        Noeud racine = (Noeud) p.parse().value;
-        System.out.println(racine.toString());
+        Node racine = (Node) p.parse().value;
+        System.out.println(racine);
+
 
         Set<String> data;
         data = racine.getLet();
-        String dataWrite = "DATA SEGMENT \n";
+        String dataSet = "DATA SEGMENT \n";
         for (String i : data)
-            dataWrite += "\t" + i + " DD\n";
-        dataWrite += "DATA ENDS \n";
+            dataSet += "\t" + i + " DD\n";
+        dataSet += "DATA ENDS \n";
 
-        String code = "CODE SEGMENT\n";
-        code += racine.generer();
+        String code = "CODE SEGMENT \n";
+        code += racine.generate();
         code += "CODE ENDS";
 
-        try (FileWriter fw = new FileWriter("resultat.asm", false);
+        try (FileWriter fw = new FileWriter(args[0].contains("pgcd") ? "pgcd.asm" : "prix.asm", false);
              BufferedWriter bw = new BufferedWriter(fw);
-             PrintWriter out = new PrintWriter(bw)) {
-            out.print(dataWrite);
-            out.print(code);
+             PrintWriter pw = new PrintWriter(bw)) {
+             pw.print(dataSet);
+             pw.print(code);
         } catch (IOException e) {
             System.out.println("Erreur: " + e.getMessage());
         }
