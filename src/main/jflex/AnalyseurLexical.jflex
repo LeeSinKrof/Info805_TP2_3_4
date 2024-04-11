@@ -4,16 +4,22 @@ import java_cup.runtime.Symbol;
 
 %%
 
+/* -----------------Section des Declarations et Options----------------------*/
+// nom de la class a generer
 %class LexicalAnalyzer
 %unicode
 %line
-%column
+%column 
 
+// utilisation avec CUP
 %cup
 
+// code a ajouter dans la classe produite
 %{
 
 %}
+
+/* definitions regulieres */
 
 
 chiffre 	= [0-9]
@@ -32,12 +38,16 @@ not 		= "not" | "NOT"
 and		 	= "and" | "AND"
 or 			= "or" | "OR"
 
+// un identifiant commence par une lettre suivit d'un charactere alphanumerique (lettre/chiffre/underscore)
 ident		= [:letter:]\w*
 comment1	= "//".*
 comment2	= "/*"([^*]|("*"+[^/*]))*"*"+"/"
 comment	= {comment1}|{comment2}
 
 %%
+/* ------------------------Section des Regles Lexicales----------------------*/
+
+/* regles */
 
 {let}		{ return new Symbol(sym.LET, yyline, yycolumn) ;}
 {while}		{ return new Symbol(sym.WHILE, yyline, yycolumn) ;}

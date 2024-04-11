@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Node {
 
-    public enum TypeNode {SEQUENCE, EXPRESSION, EXPR,VAR, INT, OUTPUT, INPUT, NIL}
+    public enum TypeNode {SEQUENCE, EXPRESSION, EXPR, VAR, INT, OUTPUT, INPUT, NIL}
 
     public static int COMPTEUR = 0;
 
