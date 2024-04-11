@@ -28,11 +28,11 @@ public class Main {
         code += racine.generate();
         code += "CODE ENDS";
 
-        try (FileWriter fw = new FileWriter(args[0].contains("pgcd") ? "pgcd.asm" : "prix.asm", false);
-             BufferedWriter bw = new BufferedWriter(fw);
-             PrintWriter pw = new PrintWriter(bw)) {
-             pw.print(dataSet);
-             pw.print(code);
+        try (FileWriter fileWriter = new FileWriter(args[0].contains("pgcd") ? "pgcd.asm" : "prix.asm", false);
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+             PrintWriter printWriter = new PrintWriter(bufferedWriter)) {
+             printWriter.print(dataSet);
+             printWriter.print(code);
         } catch (IOException e) {
             System.out.println("Erreur: " + e.getMessage());
         }
