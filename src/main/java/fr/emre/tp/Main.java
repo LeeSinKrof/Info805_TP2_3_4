@@ -28,7 +28,10 @@ public class Main {
         code += racine.generate();
         code += "CODE ENDS";
 
-        try (FileWriter fileWriter = new FileWriter(args[0].contains("pgcd") ? "pgcd.asm" : "prix.asm", false);
+
+        String arg = args[0].contains("pgcd") ? "pgcd.asm" : args[0].contains("prix") ? "prix.asm" : "factorielle.asm";
+
+        try (FileWriter fileWriter = new FileWriter(arg, false);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
              PrintWriter printWriter = new PrintWriter(bufferedWriter)) {
              printWriter.print(dataSet);

@@ -9,7 +9,7 @@ import java_cup.runtime.Symbol;
 %class LexicalAnalyzer
 %unicode
 %line
-%column 
+%column
 
 // utilisation avec CUP
 %cup

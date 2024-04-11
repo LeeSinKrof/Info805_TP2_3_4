@@ -20,3 +20,11 @@ Cette commande crée un fichier pgcd.asm avec le code attendu.
 ```bash
 java -jar .\build\libs\Info805_TP2_3_4.jar pgcd.txt
 ```
+
+### En plus :
+#### Pour la factorielle
+Cette commande crée un fichier factorielle.asm avec le code attendu.
+```bash
+java -jar .\build\libs\Info805_TP2_3_4.jar factorielle.txt
+``` 
+
